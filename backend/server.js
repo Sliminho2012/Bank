@@ -1,4 +1,4 @@
-// server.js
+server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -181,4 +181,5 @@ app.get('/', (req, res) => {
 // Iniciar servidor
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
+
 });
