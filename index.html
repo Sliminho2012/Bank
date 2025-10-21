@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Əternit Bank - Login e Saldo</title>
+    <link rel="stylesheet" href="style.css">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div id="app-wrapper"> 
+<header id="main-header" class="hidden"> 
+<div class="header-left">
+                <button id="menu-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
+                <span class="bank-logo">Əternit Bank</span>
+                <input type="text" placeholder="Buscar por cartão, extrato, comprovantes..." class="search-input">
+            </div>
+            <div class="header-right">
+                <button class="icon-btn"><i class="fas fa-user-circle"></i></button>
+                <span class="username-display">Olá, <span id="header-display-username"></span>!</span> 
+<button class="icon-btn"><i class="fas fa-question-circle"></i> Ajuda</button>
+                <button id="download-save-btn-header" class="header-action-btn"><i class="fas fa-download"></i> save.dat</button>
+                <input type="file" id="upload-save-file" accept=".dat" class="hidden">
+                <button id="upload-save-btn-header" class="header-action-btn"><i class="fas fa-upload"></i> save.dat</button>
+            </div>
+        </header>
+
+        <div id="main-content">
+            <div id="sidebar" class="hidden"> 
+<button class="sidebar-item">Minha Conta</button>
+                <button class="sidebar-item">Transferências</button>
+                <button class="sidebar-item">Investimentos</button>
+                <button id="logout-btn-sidebar" class="sidebar-item logout-item">Sair da Conta</button>
+            </div>
+
+            <div id="central-area">
+                <div id="login-container" class="container card">
+                    <h1>Bem-vindo ao Əternit Bank</h1>
+                    <input type="text" id="username" placeholder="Nome de Usuário">
+                    <input type="password" id="password" placeholder="Senha">
+                    <button id="login-btn">Entrar</button>
+                    <button id="create-account-btn">Criar Conta</button>
+                    <p id="message" class="error-message"></p>
+                </div>
+
+                <div id="bank-container" class="container card hidden">
+                    <h2 class="welcome-message">Esta é sua página inicial</h2>
+                    <p class="greeting">Olá, <span id="display-username"></span>!</p>
+
+                    <div class="account-summary">
+                        <h3>Saldo e Extrato da Conta</h3>
+                        <p class="balance"><span id="current-balance">0.00</span> Ə</p>
+                        <button class="action-card-btn">Ver Extrato</button>
+                    </div>
+
+                    <div class="main-actions">
+                        <h3>Movimente sua conta direto do PC!</h3>
+                        <div class="action-grid">
+                            <button id="deposit-btn" class="action-grid-item">
+                                <i class="fas fa-money-bill-wave"></i> Depositar Dinheiro
+                            </button>
+                            <button class="action-grid-item">
+                                <i class="fas fa-exchange-alt"></i> Transferências
+                            </button>
+                            <button class="action-grid-item">
+                                <i class="fas fa-qrcode"></i> Pix
+                            </button>
+                            <button class="action-grid-item">
+                                <i class="fas fa-share-alt"></i> Open Finance
+                            </button>
+                        </div>
+                    </div>
+
+                    
+<div class="promo-card card">
+                        <h3>Ei! Você se esqueceu de contratar o seu novo cartão sem anuidade!</h3>
+                        <p class="promo-text">Peça já <i class="fas fa-credit-card"></i></p>
+                    </div>
+
+                    <div class="loan-card card">
+                        <h3>A partir de R$ 135,62 você conquista sua casa...</h3>
+                        <button class="action-card-btn">Simule aqui</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+<button id="fab" class="fab hidden">+</button>
+        <div id="fab-menu" class="fab-menu hidden">
+            <button id="add-bill-option" class="menu-item">Adicionar Cédula ao Saldo</button>
+        </div>
+
+        <div id="bill-deposit-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Adicionar Cédula</h3>
+                <input type="text" id="bill-code" placeholder="Digite o código da cédula">
+                <button id="submit-bill-btn">Confirmar</button>
+                <button id="close-bill-modal-btn">Cancelar</button>
+                <p id="bill-message" class="error-message"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

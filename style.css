@@ -1,0 +1,505 @@
+/* Paleta de Cores */
+:root {
+    --lilac-dark: #6A0587;   /* Lilás escuro para botões primários, texto importante */
+    --lilac-medium: #9932CC; /* Lilás médio para destaques */
+    --lilac-light: #CC99FF;  /* Lilás claro para fundos de seções */
+    --lilac-bg: #F8F0FF;     /* Lilás bem claro, quase branco, para o fundo geral */
+    --text-dark: #333;       /* Texto escuro padrão */
+    --text-medium: #666;     /* Texto médio */
+    --white: #fff;
+    --grey-light: #eee;
+    --grey-medium: #ccc;
+    --green-balance: #28a745; /* Verde para saldo */
+    --red-error: #dc3545;     /* Vermelho para erro */
+}
+
+/* Reset Básico */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--lilac-bg);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinhar ao topo para o cabeçalho fixo */
+    min-height: 100vh;
+}
+
+#app-wrapper {
+    width: 100%;
+    max-width: 1200px; /* Largura máxima da aplicação */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05); /* Sutil sombra para a app */
+    background-color: var(--white); /* Fundo da app é branco */
+}
+
+/* Ocultar elementos */
+.hidden {
+    display: none !important;
+}
+
+/* === Cabeçalho === */
+#main-header {
+    background-color: var(--lilac-dark);
+    color: var(--white);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Cabeçalho fixo */
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.bank-logo {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-right: 20px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.icon-btn:hover {
+    opacity: 0.8;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    width: 250px;
+    outline: none;
+}
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.username-display {
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+.header-action-btn {
+    background-color: var(--lilac-medium);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.85em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.header-action-btn:hover {
+    background-color: var(--lilac-dark);
+}
+
+/* === Conteúdo Principal (Central e Sidebar) === */
+#main-content {
+    display: flex;
+    flex: 1; /* Ocupa o espaço restante */
+    padding-top: 0; /* Remove padding inicial pois o cabeçalho já está fixo */
+}
+
+#sidebar {
+    width: 200px;
+    background-color: var(--lilac-light);
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    position: sticky; /* Sidebar fixa ao rolar */
+    top: 70px; /* Abaixo do cabeçalho */
+    height: calc(100vh - 70px); /* Altura restante da viewport */
+}
+
+.sidebar-item {
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 1.05em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sidebar-item:hover {
+    background-color: var(--lilac-medium);
+    color: var(--white);
+}
+
+.sidebar-item.logout-item {
+    color: var(--red-error);
+    margin-top: auto; /* Empurra para o final da sidebar */
+}
+.sidebar-item.logout-item:hover {
+    background-color: var(--red-error);
+    color: var(--white);
+}
+
+
+#central-area {
+    flex: 1; /* Ocupa o espaço restante */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaço entre os cartões */
+    align-items: center; /* Centraliza os containers/cards */
+}
+
+/* === Estilo dos Cards/Containers === */
+.container.card {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 500px; /* Largura máxima para os cards centrais */
+    text-align: center;
+}
+
+#login-container {
+    padding: 40px;
+    max-width: 400px;
+    margin-top: 50px; /* Margem do topo para o login */
+}
+
+h1 {
+    color: var(--lilac-dark);
+    margin-bottom: 25px;
+}
+
+h2.welcome-message {
+    color: var(--lilac-medium);
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.greeting {
+    font-size: 1.1em;
+    color: var(--text-medium);
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="password"] {
+    width: calc(100% - 24px); /* Ajusta para padding */
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid var(--grey-medium);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+button {
+    background-color: var(--lilac-medium);
+    color: var(--white);
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.05em;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: var(--lilac-dark);
+}
+
+.error-message {
+    color: var(--red-error);
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* === Componentes do Banco === */
+.account-summary {
+    background-color: var(--lilac-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.account-summary h3 {
+    color: var(--lilac-dark);
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.balance {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--green-balance);
+    margin: 10px 0 20px;
+    text-align: right;
+}
+.balance span { /* Para o valor numérico */
+    margin-right: 5px;
+}
+
+.action-card-btn {
+    background-color: var(--lilac-medium);
+    color: var(--white);
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    width: auto; /* Botões menores dentro dos cards */
+    display: block; /* Cada botão em sua própria linha */
+    margin: 10px auto; /* Centraliza */
+}
+.action-card-btn:hover {
+    background-color: var(--lilac-dark);
+}
+
+.main-actions h3 {
+    color: var(--lilac-dark);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 2 colunas, responsivo */
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.action-grid-item {
+    background-color: var(--lilac-light);
+    color: var(--text-dark);
+    padding: 25px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    height: 120px; /* Altura fixa para os itens da grade */
+    width: auto; /* Para se ajustar ao grid */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.action-grid-item i {
+    font-size: 1.8em;
+    color: var(--lilac-dark);
+}
+
+.action-grid-item:hover {
+    background-color: var(--lilac-medium);
+    color: var(--white);
+}
+.action-grid-item:hover i {
+    color: var(--white);
+}
+
+/* === Cards de Promoção/Empréstimo === */
+.promo-card, .loan-card {
+    text-align: left;
+    padding: 20px;
+    background-color: var(--lilac-bg); /* Um lilás mais claro */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.promo-card h3, .loan-card h3 {
+    color: var(--lilac-dark);
+    margin-top: 0;
+    font-size: 1.1em;
+}
+.promo-text {
+    font-size: 1.1em;
+    color: var(--lilac-medium);
+    font-weight: bold;
+    margin-top: 10px;
+}
+.promo-text i {
+    color: var(--lilac-dark);
+}
+
+/* === Botão Flutuante (FAB) e Modal === */
+.fab {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    font-size: 2.5em;
+    line-height: 65px;
+    text-align: center;
+    background-color: var(--green-balance); /* FAB em verde para destaque */
+    color: var(--white);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 0;
+    border: none;
+}
+.fab:hover {
+    background-color: #218838; /* Verde mais escuro no hover */
+}
+
+.fab-menu {
+    position: fixed;
+    bottom: 100px; /* Acima do FAB */
+    right: 25px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 250px;
+    z-index: 999;
+}
+
+.fab-menu .menu-item {
+    display: block;
+    background: none;
+    color: var(--text-dark);
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--grey-light);
+    margin: 0;
+    font-size: 1em;
+}
+
+.fab-menu .menu-item:last-child {
+    border-bottom: none;
+}
+
+.fab-menu .menu-item:hover {
+    background-color: var(--lilac-bg);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 {
+    color: var(--lilac-dark);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.modal-content input {
+    margin-bottom: 15px;
+}
+
+.modal-content button {
+    margin-top: 5px;
+}
+
+/* === Responsividade Básica === */
+@media (max-width: 768px) {
+    #main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .header-right {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    .search-input {
+        width: 100%;
+        margin-top: 10px;
+    }
+    #main-content {
+        flex-direction: column;
+    }
+    #sidebar {
+        width: 100%;
+        height: auto;
+        position: static; /* Não fixar em telas pequenas */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    #central-area {
+        padding: 15px;
+        gap: 15px;
+    }
+    .container.card {
+        padding: 20px;
+    }
+    .action-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    }
+}
+
+@media (max-width: 480px) {
+    .header-right {
+        gap: 8px;
+    }
+    .header-action-btn, .icon-btn {
+        font-size: 0.8em;
+        padding: 6px 10px;
+    }
+    .bank-logo {
+        font-size: 1.2em;
+    }
+    #login-container {
+        padding: 30px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    .fab {
+        width: 55px;
+        height: 55px;
+        font-size: 2em;
+        line-height: 55px;
+    }
+    .fab-menu {
+        bottom: 80px;
+        width: 200px;
+    }
+}
